@@ -1,9 +1,10 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class jump : MonoBehaviour
 {
+    public GameOverStart gameManager;
     public float velocity;
     Rigidbody2D rb;
     void Start()
@@ -18,5 +19,10 @@ public class jump : MonoBehaviour
             rb.linearVelocity = Vector2.up * velocity;
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        gameManager.GameOver();
     }
 }
